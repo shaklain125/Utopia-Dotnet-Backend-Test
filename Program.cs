@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using UtopiaBackendChallenge.Data;
+
+
 namespace UtopiaBackendChallenge
 {
     public class Program
@@ -12,6 +16,9 @@ namespace UtopiaBackendChallenge
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<utopiaContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("utopiaContext")));
 
             var app = builder.Build();
 
